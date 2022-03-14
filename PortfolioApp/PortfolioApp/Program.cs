@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+//builder.Services.AddAuthentication().AddIdentityServerJwt();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -25,8 +28,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.UseAuthentication();
-app.UseAuthorization();
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 app.MapControllerRoute("default", "{controller}/{action=Index}/{id?}");
 app.MapRazorPages();
